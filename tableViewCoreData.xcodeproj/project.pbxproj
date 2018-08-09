@@ -14,6 +14,8 @@
 		081372E9211C92F10039AB92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081372E8211C92F10039AB92 /* Assets.xcassets */; };
 		081372EC211C92F10039AB92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081372EA211C92F10039AB92 /* LaunchScreen.storyboard */; };
 		081372EF211C92F10039AB92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 081372EE211C92F10039AB92 /* main.m */; };
+		081372F9211C93AB0039AB92 /* ToDoEntity+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 081372F7211C93AB0039AB92 /* ToDoEntity+CoreDataClass.m */; };
+		081372FA211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 081372F8211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,10 @@
 		081372EB211C92F10039AB92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		081372ED211C92F10039AB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		081372EE211C92F10039AB92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		081372F5211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToDoEntity+CoreDataProperties.h"; sourceTree = "<group>"; };
+		081372F6211C93AB0039AB92 /* ToDoEntity+CoreDataClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ToDoEntity+CoreDataClass.h"; sourceTree = "<group>"; };
+		081372F7211C93AB0039AB92 /* ToDoEntity+CoreDataClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ToDoEntity+CoreDataClass.m"; sourceTree = "<group>"; };
+		081372F8211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ToDoEntity+CoreDataProperties.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,10 @@
 		081372D0211C92F00039AB92 = {
 			isa = PBXGroup;
 			children = (
+				081372F5211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.h */,
+				081372F6211C93AB0039AB92 /* ToDoEntity+CoreDataClass.h */,
+				081372F7211C93AB0039AB92 /* ToDoEntity+CoreDataClass.m */,
+				081372F8211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.m */,
 				081372DB211C92F00039AB92 /* tableViewCoreData */,
 				081372DA211C92F00039AB92 /* Products */,
 			);
@@ -146,7 +156,9 @@
 			files = (
 				081372E1211C92F00039AB92 /* ViewController.m in Sources */,
 				081372E7211C92F00039AB92 /* tableViewCoreData.xcdatamodeld in Sources */,
+				081372F9211C93AB0039AB92 /* ToDoEntity+CoreDataClass.m in Sources */,
 				081372EF211C92F10039AB92 /* main.m in Sources */,
+				081372FA211C93AB0039AB92 /* ToDoEntity+CoreDataProperties.m in Sources */,
 				081372DE211C92F00039AB92 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
