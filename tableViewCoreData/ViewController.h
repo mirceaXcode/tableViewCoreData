@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+@property (weak,nonatomic) NSManagedObjectContext *myContext;
 
 @end
 
