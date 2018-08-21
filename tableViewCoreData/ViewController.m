@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "ToDoEntity+CoreDataClass.h"
 #import "TableViewCell.h"
+//#import "AppDelegate.h"
 
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
@@ -19,6 +19,8 @@
 
 @property (strong,nonatomic) NSFetchedResultsController *resultsController;
 
+
+
 @end
 
 @implementation ViewController
@@ -26,25 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // NSFetchedResultsController delegate
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    fetchRequest.entity = [NSEntityDescription entityForName:@"ToDoEntity" inManagedObjectContext:_myContext];
-    
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"TRUEPREDICATE"];
-    
-    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES]];
-    
-    _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_myContext sectionNameKeyPath:nil cacheName:nil];
-    _resultsController.delegate = self;
-    
-    NSError *err;
-    
-    BOOL fetchSucceeded = [_resultsController performFetch:&err];
-    
-    if(!fetchSucceeded){
-         @throw [NSException exceptionWithName:NSGenericException reason:@"Could't fetch!" userInfo:@{NSUnderlyingErrorKey:err}];
-    }
+    [self initialiseNSFetchedResultsControllerDelegate];
     
 }
 
@@ -88,7 +72,33 @@
     return cell;
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate
+#pragma mark - NSFetchedResultsController delegate
+
+-(void) initialiseNSFetchedResultsControllerDelegate {
+    
+    
+    // NSFetchedResultsController delegate
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    fetchRequest.entity = [NSEntityDescription entityForName:@"ToDoEntity" inManagedObjectContext:_myContext];
+
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"TRUEPREDICATE"];
+    
+    // added this -> selector:@selector(localizedCaseInsensitiveCompare:) in order to do the sort regarding the Case Sensitive.
+    fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    
+    _resultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_myContext sectionNameKeyPath:nil cacheName:nil];
+    _resultsController.delegate = self;
+    
+    NSError *err;
+    
+    BOOL fetchSucceeded = [_resultsController performFetch:&err];
+    
+    if(!fetchSucceeded){
+        @throw [NSException exceptionWithName:NSGenericException reason:@"Could't fetch!" userInfo:@{NSUnderlyingErrorKey:err}];
+    }
+    
+}
 
 -(void) controllerWillChangeContent:(NSFetchedResultsController *)controller{
     [_tableView beginUpdates];

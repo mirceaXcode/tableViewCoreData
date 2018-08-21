@@ -17,6 +17,7 @@
 
 - (void)saveContext;
 
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
 

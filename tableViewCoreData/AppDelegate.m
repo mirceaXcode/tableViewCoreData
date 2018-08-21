@@ -19,8 +19,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    // If this next line is not added, the coredata will not be initialized and the context, in this case, myContext, will be nil, giving an error when trying to run this in ViewCOntroller -> [self initialiseNSFetchedResultsControllerDelegate]; The problem will come actually from this line of code -> fetchRequest.entity = [NSEntityDescription entityForName:@"ToDoEntity" inManagedObjectContext:_myContext]; as myContext is nil, hence the error we are getting -> "nil is not a legal NSManagedObjectContext parameter searching for entity name 'ToDoEntity''"
+    [self persistentContainer];
+    
     ViewController *rootVC = (ViewController *)_window.rootViewController;
     rootVC.myContext = _persistentContainer.viewContext;
+
     
     return YES;
 }
